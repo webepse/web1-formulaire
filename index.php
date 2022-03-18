@@ -15,6 +15,8 @@
                 <label for="nom">Nom: </label>
                 <input type="text" name="nom" id="nom" class="form-control" required>
             </div>
+            <!-- treatment.php?nom=Berti&prenom=jordan -->
+            <!-- www.jordanberti.com/Berti/jordan -->
             <div class="form-group my-3">
                 <label for="prenom">Prénom: </label>
                 <input type="text" name="prenom" id="prenom" class="form-control">
@@ -37,10 +39,23 @@
             <?php
                 if(isset($_GET['error']))
                 {
-                    echo "<div class='alert alert-danger my-3'>Une erreur est survenue</div>";
+                    echo "<div class='alert alert-danger my-3'>Une erreur est survenue (code erreur: ".$_GET['error'].")</div>";
                 }
+             
             ?>
         </form>
+        <?php 
+               if(isset($_COOKIE['nom']))
+               {
+                   echo "<div>".$_COOKIE['nom']."</div>";
+                   echo "<div>".$_COOKIE['prenom']."</div>";
+                   echo "<div>".$_COOKIE['pays']."</div>";
+                   echo "<div>".$_COOKIE['message']."</div>";
+               }
+
+        ?>
     </div>
 </body>
 </html>
+
+

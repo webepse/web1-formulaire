@@ -1,5 +1,7 @@
 <?php
 
+// var_dump($_POST)
+
 // test si formulaire envoyé
 if(isset($_POST['nom'])){ 
     // vérifier si mon formulaire est correct 
@@ -10,7 +12,7 @@ if(isset($_POST['nom'])){
     }else{
         $nom = htmlspecialchars($_POST['nom']);
     }
-
+     
     if(empty($_POST['prenom']))
     {
         $err=2;
@@ -41,7 +43,11 @@ if(isset($_POST['nom'])){
     // test s'il y a erreur
     if($err==0)
     {
-        echo "ok";
+        setcookie('nom',$nom,time()+(365*24*3600),null,null,false,true);
+        setcookie('prenom',$prenom,time()+(365*24*3600),null,null,false,true);
+        setcookie('pays',$pays,time()+(365*24*3600),null,null,false,true);
+        setcookie('message',$message,time()+(365*24*3600),null,null,false,true);
+        header("LOCATION:index.php");
     }else{
         header("LOCATION:index.php?error=".$err);
     }
